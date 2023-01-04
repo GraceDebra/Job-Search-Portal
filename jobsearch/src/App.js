@@ -1,15 +1,25 @@
 import React from 'react';
-import {
-  ChakraProvider,
-  theme,
-} from '@chakra-ui/react';
+import "./App.css";
+import { Route, Routes } from 'react-router-dom';
 import LandingPage from './components/Landing/LandingPage';
+import SignIn from './components/Account/SignIn';
+import SignUp from './components/Account/SignUp';
+import ForgotPassword from './components/Account/PasswordCards/ForgotPassword';
+import VerifyEmailForm from './components/Account/PasswordCards/EmailVerificationCard';
+import ResetPasswordCard from './components/Account/PasswordCards/ResetPasswordCard';
 
-function App() {
+const  App=()=> {
   return (
-    <ChakraProvider theme={theme}>
-      <LandingPage/>
-    </ChakraProvider>
+    <>
+    <Routes>
+       <Route index element={<LandingPage />} />
+       <Route path="/login" element={<SignIn />} />
+       <Route path="/register" element={<SignUp />} />
+       <Route path="/forgotpassword" element={<ForgotPassword />} />
+       <Route path="/resetpassword" element={<ResetPasswordCard />} />
+       <Route path="/verifyemail" element={<VerifyEmailForm />} />
+    </Routes>
+ </>
   );
 }
 

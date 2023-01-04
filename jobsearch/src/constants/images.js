@@ -4,7 +4,7 @@ import twitter from '../assets/twitter.png'
 import facebook from '../assets/Facebook.png'
 import microsoft from '../assets/Microsoft.png'
 import google from '../assets/google.png'
-
+import login from '../assets/login.png'
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -14,5 +14,6 @@ logo,
 twitter,
 google,
 microsoft,
-facebook
+facebook,
+login,
 };
