@@ -1,44 +1,90 @@
 import React from 'react';
-import { Box, Flex, Button, HStack, Image, VStack, Heading, Text } from '@chakra-ui/react';
-import logo from './assets/landing.jpg'
+import {
+  Box,
+  Input,
+  Flex,
+  InputGroup,
+  Button,
+  HStack,
+  Image,
+  InputRightAddon,
+  VStack,
+  Heading,
+  Text,
+  Link,
+} from '@chakra-ui/react';
+import {BiSearchAlt2} from "react-icons/bi"
+import { images } from '../../constants';
 const LandingPage = () => {
   return (
     <>
       <Box bg={'gray.100'} p={12}>
-        <Box bg={'gray.50'} borderRadius={25} height="100vh">
-          <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-            <HStack alignItems={'center'}
-              paddingLeft={4}
-              paddingTop={4}
-                >
-              <Image
-                borderRadius="full"
-                boxSize="50px"
-               
-                src="https://bit.ly/dan-abramov"
-                alt="Dan Abramov"
-              />
+        <Box bg={'gray.50'} borderRadius={25} height="100vh" p={8}>
+          <Flex alignItems={'center'} justifyContent={'space-between'}>
+           <HStack>
+            <Image
+              borderRadius="full"
+              boxSize="50px"
+              src={images.logo}
+              alt="logo"
+            />
+            <Text fontSize={'2xl'} >Jobfy</Text>
             </HStack>
-            <Flex alignItems={'center'}>
-              <Button variant={'solid'} colorScheme={'teal'} size={'sm'} mr={4}>
-                Login
-              </Button>
-            </Flex>
+            <Button variant={'solid'} colorScheme={'teal'} size={'sm'}>
+              Login
+            </Button>
           </Flex>
           <Flex>
-          <VStack>
-          <Heading>
-            Get hired by the popular teams
-          </Heading>
-          <Text>Find job to your interest simply click on serach and choose category according to your skills</Text>
-          </VStack>
-          <Image
-           boxSize='200px'
-           src={logo}
-            alt='Dan Abramov'
-             />
-
+            <VStack pt={8}>
+              <Heading maxWidth={'350px'} noOfLines={[1, 2, 3]} >
+                Get hired by the popular teams
+              </Heading>
+              <Text maxWidth={'350px'} noOfLines={[1, 2]} pt={6}>
+                Find job to your interest simply click on search and choose
+                category according to your skills
+              </Text>
+            </VStack>
+            <Image
+              ml={40}
+              h={350}
+              w={600}
+              src={images.landingimage}
+              alt="landing image"
+            />
           </Flex>
+          <Flex flexDir="column">
+            <InputGroup >
+                <Input  borderWidth="1.9px" placeholder="Search job by category, location or company name" w={420}/>
+                <InputRightAddon
+                    borderColor="#FFA90A"
+                    bg="#FFA90A"
+                    children={<BiSearchAlt2 color="#fff"/>}
+                />
+            </InputGroup>
+        </Flex>
+          <Box>
+            <Text fontSize="xl" color={'black'} pt={10}>
+              Recent Job Openings Posted
+            </Text>
+            <HStack spacing={8} pt={4}>
+              <Link>
+                <Image src={images.facebook} boxSize="40px" objectFit="cover" />
+              </Link>
+              <Link>
+                <Image src={images.twitter} boxSize="40px" objectFit="cover" />
+              </Link>
+              <Link>
+                <Image
+                  src={images.microsoft}
+                  boxSize="40px"
+                  objectFit="cover"
+                />
+              </Link>
+              <Link>
+                <Image src={images.google} boxSize="40px" objectFit="cover" />
+              </Link>
+            </HStack>
+          </Box>
         </Box>
       </Box>
     </>
