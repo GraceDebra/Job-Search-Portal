@@ -7,6 +7,8 @@ import SignUp from './components/Account/SignUp';
 import ForgotPassword from './components/Account/PasswordCards/ForgotPassword';
 import VerifyEmailForm from './components/Account/PasswordCards/EmailVerificationCard';
 import ResetPasswordCard from './components/Account/PasswordCards/ResetPasswordCard';
+import HomeCard from './cards/HomeCard';
+import Home from './pages/Home';
 
 const  App=()=> {
   return (
@@ -18,6 +20,7 @@ const  App=()=> {
        <Route path="/forgotpassword" element={<ForgotPassword />} />
        <Route path="/resetpassword" element={<ResetPasswordCard />} />
        <Route path="/verifyemail" element={<VerifyEmailForm />} />
+       <Route path='home' element={<Home/>}/>
     </Routes>
  </>
   );

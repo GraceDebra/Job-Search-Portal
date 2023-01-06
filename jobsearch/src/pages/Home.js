@@ -10,7 +10,7 @@ const Home = () => {
     </Heading>
     <Text>Based on your profile, company preferences and recent activity</Text>
     <Box px="5vw">
-    <SimpleGrid mt="6vh" columns={[1, 2, 3, 4]} spacing="auto"  >
+    <SimpleGrid columns={[1, 2, 3, 4]} spacing="auto"  >
       {data.map(content => {
         return <HomeCard key={content.id} content={content} />;
       })}
