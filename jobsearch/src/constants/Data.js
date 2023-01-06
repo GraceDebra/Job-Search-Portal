@@ -1,9 +1,10 @@
+import images from "./images";
 export const data =  [
   {
     id: 1,
-    title: 'susan smith',
+    title: 'Udacity',
     description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-    image:"https://bit.ly/dan-abramov",
+    image:images.udacity,
     job:'3 jobs',
     msg:'message',
   },
@@ -17,7 +18,7 @@ export const data =  [
   },
   {
     id: 3,
-    title: 'susan smith',
+    title: 'susan',
     description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
     image:"https://bit.ly/dan-abramov",
     job:'3 jobs',
@@ -25,7 +26,7 @@ export const data =  [
   },
   {
     id: 4,
-    title: 'susan smith',
+    title: 'susan',
     description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
     image:"https://bit.ly/dan-abramov",
     job:'3 jobs',
@@ -33,7 +34,7 @@ export const data =  [
   },
   {
     id: 5,
-    title: 'susan smith',
+    title: 'susan',
     description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
     image:"https://bit.ly/dan-abramov",
     job:'3 jobs',
@@ -41,7 +42,7 @@ export const data =  [
   },
   {
     id: 6,
-    title: 'susan smith',
+    title: 'susan',
     description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
     image:"https://bit.ly/dan-abramov",
     job:'3 jobs',
