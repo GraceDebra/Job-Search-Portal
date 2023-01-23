@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useToast } from '@chakra-ui/react';
+import {useState }  from 'react';
 import {
   Button,
   useColorModeValue,
@@ -19,12 +18,19 @@ import {
 } from '@chakra-ui/react';
 import { images } from '../../constants';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 
 const SignUp = () => {
     const navigate= useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const toast = useToast();
+    //const toast = useToast();
+    const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [fname, setFname] = useState("");
+  const [sname, setSname] = useState("");
+
+
+  
   return (
     <Box p={2} bg={'gray.50'}>
       <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
@@ -53,24 +59,28 @@ const SignUp = () => {
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
+                  <Input type="text" value={fname}
+          onChange={(e) => setFname(e.target.value)} />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="lastName">
                   <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
+                  <Input type="text" value={sname}
+          onChange={(e) => setSname(e.target.value)} />
                 </FormControl>
               </Box>
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" value={email}
+          onChange={(e) => setEmail(e.target.value)}/>
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} />
+                <Input type={showPassword ? 'text' : 'password'} value={password}
+          onChange={(e) => setPassword(e.target.value)}/>
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -92,17 +102,13 @@ const SignUp = () => {
                   bg: 'blue.500',
 
                 }}
-                onClick={() => {
-                  toast({
-                    title: 'Account created.',
-                    description: "We've created your account for you.",
-                    status: 'success',
-                    duration: 3000,
-                    isClosable: true,
-                  });
-                }}>
+                >
                 Sign up
               </Button>
+              <Button
+        >
+          Register with Google
+        </Button>
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
