@@ -8,18 +8,20 @@ import ForgotPassword from './components/Account/PasswordCards/ForgotPassword';
 import VerifyEmailForm from './components/Account/PasswordCards/EmailVerificationCard';
 import ResetPasswordCard from './components/Account/PasswordCards/ResetPasswordCard';
 import Home from './pages/Home';
+import SearchBar from './components/SearchBar';
 
 const  App=()=> {
   return (
     <>
     <Routes>
        <Route index element={<LandingPage />} />
+       <Route path="/search" element={<SearchBar/>}/>
        <Route path="/login" element={<SignIn />} />
        <Route path="/register" element={<SignUp />} />
        <Route path="/forgotpassword" element={<ForgotPassword />} />
        <Route path="/resetpassword" element={<ResetPasswordCard />} />
        <Route path="/verifyemail" element={<VerifyEmailForm />} />
-       <Route path='home' element={<Home/>}/>
+       <Route path="/home" element={<Home/>}/>
     </Routes>
  </>
   );
