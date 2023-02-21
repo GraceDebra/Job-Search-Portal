@@ -1,29 +1,25 @@
 import React from 'react';
 import {
   Box,
-  Input,
   Flex,
-  InputGroup,
   Button,
   HStack,
   Image,
-  InputRightAddon,
   VStack,
   Heading,
   Text,
   Link,
 } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
-
-import { BiSearchAlt2 } from 'react-icons/bi';
 import { images } from '../../constants';
+import SearchBar from '../SearchBar';
 
 
 const LandingPage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Box bg={'gray.100'} p={8}>
+      <Box bg={'gray.300'} p={16}>
         <Box bg={'gray.50'} borderRadius={25} height="100vh" p={8}>
           <Flex alignItems={'center'} justifyContent={'space-between'}>
             <HStack>
@@ -57,20 +53,10 @@ const LandingPage = () => {
               alt="landing image"
             />
           </Flex>
-          <Flex flexDir="column">
-            <InputGroup>
-              <Input
-                borderWidth="1.9px"
-                placeholder="Search job by category, location or company name"
-                w={420}
-              />
-              <InputRightAddon
-                borderColor="#FFA90A"
-                bg="#FFA90A"
-                children={<BiSearchAlt2 color="#fff" />}
-              />
-            </InputGroup>
-          </Flex>
+          <Box>
+            <SearchBar/>
+            
+          </Box>
           <Box>
             <Text fontSize="xl" color={'black'} pt={10}>
               Recent Job Openings Posted
