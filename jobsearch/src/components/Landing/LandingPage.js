@@ -32,7 +32,7 @@ const LandingPage = () => {
               <Text fontSize={'2xl'}>Jobfy</Text>
             </HStack>
             <Button variant={'solid'} colorScheme={'teal'} size={'sm'}  onClick={() => navigate("/login")}>
-              uuuu
+              Login
             </Button>
           </Flex>
           <Flex>

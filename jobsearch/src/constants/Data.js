@@ -42,10 +42,10 @@ export const data =  [
   },
   {
     id: 6,
-    title: 'susan',
+    title: "grace",
     description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
     image:"https://bit.ly/dan-abramov",
-    job:'3 jobs',
+    job:'1 jobs',
     msg:'message',
   },
 ];
