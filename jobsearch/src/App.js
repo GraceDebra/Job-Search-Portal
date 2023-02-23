@@ -10,6 +10,7 @@ import ResetPasswordCard from './components/Account/PasswordCards/ResetPasswordC
 import Home from './pages/Home';
 import SearchBar from './components/SearchBar';
 import OnboardingCard from './cards/OnboardingCard';
+import Onboarding from './pages/Dashboard/Onboarding';
 
 const  App=()=> {
   return (
@@ -23,7 +24,7 @@ const  App=()=> {
        <Route path="/resetpassword" element={<ResetPasswordCard />} />
        <Route path="/verifyemail" element={<VerifyEmailForm />} />
        <Route path="/home" element={<Home/>}/>
-       <Route path="/onboarding" element={<OnboardingCard/>}/>
+       <Route path="/onboarding" element={<Onboarding/>}/>
     </Routes>
  </>
   );

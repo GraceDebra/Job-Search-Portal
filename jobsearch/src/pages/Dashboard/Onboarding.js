@@ -2,8 +2,10 @@ import {React} from 'react';
 import{Box, SimpleGrid } from '@chakra-ui/react';
 import OnboardingCard from '../../cards/OnboardingCard';
 import {List} from '../../constants/OnboardingCardList';
-import { images } from '../../constants'
 
+
+const Onboarding =()=>{
+return(
 <Box m={4}>
           <SimpleGrid columns={[1, 2, 3, 4]} spacing="20px">
             {List.map(list => {
@@ -11,3 +13,6 @@ import { images } from '../../constants'
             })}
           </SimpleGrid>
         </Box>
+);
+}
+export default Onboarding;
