@@ -8,8 +8,6 @@ import ForgotPassword from './components/Account/PasswordCards/ForgotPassword';
 import VerifyEmailForm from './components/Account/PasswordCards/EmailVerificationCard';
 import ResetPasswordCard from './components/Account/PasswordCards/ResetPasswordCard';
 import Home from './pages/Home';
-import SearchBar from './components/SearchBar';
-import OnboardingCard from './cards/OnboardingCard';
 import Onboarding from './pages/Dashboard/Onboarding';
 
 const  App=()=> {
@@ -17,7 +15,6 @@ const  App=()=> {
     <>
     <Routes>
        <Route index element={<LandingPage />} />
-       <Route path="/search" element={<SearchBar/>}/>
        <Route path="/login" element={<SignIn />} />
        <Route path="/register" element={<SignUp />} />
        <Route path="/forgotpassword" element={<ForgotPassword />} />
