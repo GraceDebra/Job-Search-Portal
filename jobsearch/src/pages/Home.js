@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Box,
   SimpleGrid,
-  Input,
   useColorModeValue,
   Spacer,
   Image,
