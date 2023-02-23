@@ -5,8 +5,6 @@ import {
   Input,
   useColorModeValue,
   Spacer,
-  InputRightAddon,
-  InputGroup,
   Image,
   Heading,
   Button,
@@ -19,7 +17,7 @@ import {
 import HomeCard from '../cards/HomeCard';
 import { data } from '../constants/Data';
 import { images } from '../constants';
-import { BiSearchAlt2 } from 'react-icons/bi';
+import SearchBar from '../components/SearchBar';
 
 const Home = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
@@ -83,20 +81,9 @@ const Home = () => {
           </Heading>
           <Text fontSize="xs">Find the dream Companies you dream work for</Text>
         </VStack>
-        <Flex pt={6} width={600}>
-          <InputGroup>
-            <Input
-              borderWidth="1.9px"
-              placeholder="Search job by category, location or company name"
-              w={420}
-            />
-            <InputRightAddon
-              borderColor="#FFA90A"
-              bg="#FFA90A"
-              children={<BiSearchAlt2 color="#fff" />}
-            />
-          </InputGroup>
-        </Flex>
+        <Box pt={6} width={600}>
+          <SearchBar/>
+        </Box>
         <Text fontSize="xs" pt={4}>
           Popular: Twitter, Microsoft, Apple, Facebook
         </Text>
