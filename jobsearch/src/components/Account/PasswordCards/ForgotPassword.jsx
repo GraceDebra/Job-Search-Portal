@@ -8,6 +8,7 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+  import{sendPasswordReset} from '../../../firebase'
 import { useNavigate } from 'react-router-dom';
   
   
@@ -34,7 +35,7 @@ import { useNavigate } from 'react-router-dom';
           <Text
             fontSize={{ base: 'sm', sm: 'md' }}
             color={useColorModeValue('gray.800', 'gray.400')}>
-            You&apos;ll get an email with an OTP Code
+            You will get an email reset link
           </Text>
           <FormControl id="email">
             <Input
@@ -47,11 +48,11 @@ import { useNavigate } from 'react-router-dom';
             <Button
               bg={'blue.400'}
               color={'white'}
-              onClick={() => navigate("/verifyemail")}
+              onClick={sendPasswordReset}
               _hover={{
                 bg: 'blue.500',
               }}>
-              Request OTP
+              Send
             </Button>
           </Stack>
         </Stack>

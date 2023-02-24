@@ -17,8 +17,11 @@ import HomeCard from '../cards/HomeCard';
 import { data } from '../constants/Data';
 import { images } from '../constants';
 import SearchBar from '../components/SearchBar';
-
+//import {useAuthValue} from '../utils/AuthContext'
+import { signOut } from 'firebase/auth' 
+import { auth } from '../firebase'
 const Home = () => {
+
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('pink.800', 'white');
   return (
@@ -69,7 +72,7 @@ const Home = () => {
           </Link>
         </HStack>
         <Spacer />
-        <Button colorScheme="teal" pr={4}>
+        <Button colorScheme="teal" pr={4}  onClick={() => signOut(auth)}>
           Logout
         </Button>
       </Flex>
