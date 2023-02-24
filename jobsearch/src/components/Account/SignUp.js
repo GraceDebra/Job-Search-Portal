@@ -19,21 +19,57 @@ import {
 import { images } from '../../constants';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useNavigate  } from 'react-router-dom';
+import {auth} from '../../firebase'
+import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import{signInWithGoogle} from '../../firebase'
+import {useAuthValue} from '../../utils/AuthContext'
+
 
 const SignUp = () => {
+
     const navigate= useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    //const toast = useToast();
-    const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fname, setFname] = useState("");
-  const [sname, setSname] = useState("");
+    const [showCPassword, setShowCPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
+  const [error, setError] = useState('')
+  const {setTimeActive} = useAuthValue()
 
-  
+  const validatePassword = () => {
+    let isValid = true
+    if (password !== '' && confirmPassword !== ''){
+      if (password !== confirmPassword) {
+        isValid = false
+        setError('Passwords does not match')
+      }
+    }
+    return isValid
+  }
+
+  const register = e => {
+    e.preventDefault()
+    setError('')
+    if(validatePassword()) {
+      // Create a new user with email and password using firebase
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          sendEmailVerification(auth.currentUser)   
+          .then(() => {
+            //setTimeActive(true)
+            navigate('/verifyemail')
+          }).catch((err) => alert(err.message))
+        })
+        .catch(err => setError(err.message))
+    }
+    setEmail('')
+    setPassword('')
+    setConfirmPassword('')
+  }
   return (
     <Box p={2} bg={'gray.50'}>
-      <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+      <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }} >
       <Flex flex={1}>
           <Image
             borderRightRadius={15}
@@ -48,6 +84,7 @@ const SignUp = () => {
           <Heading fontSize={'4xl'} textAlign={'center'}>
             Sign up
           </Heading>
+        <Text>{error}</Text>  
         </Stack>
         <Box
           rounded={'lg'}
@@ -57,20 +94,17 @@ const SignUp = () => {
           <Stack spacing={4}>
             <HStack>
               <Box>
+              {/*
                 <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
+                  <FormLabel>Full Name</FormLabel>
                   <Input type="text" value={fname}
           onChange={(e) => setFname(e.target.value)} />
-                </FormControl>
+                </FormControl>*/}
               </Box>
               <Box>
-                <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" value={sname}
-          onChange={(e) => setSname(e.target.value)} />
-                </FormControl>
               </Box>
             </HStack>
+            <form id="login-form"></form>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input type="email" value={email}
@@ -92,9 +126,26 @@ const SignUp = () => {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
+            <FormControl id="password" isRequired>
+              <FormLabel>Confirm Password</FormLabel>
+              <InputGroup>
+                <Input type={showCPassword ? 'text' : 'password'} value={confirmPassword}
+          onChange={e => setConfirmPassword(e.target.value)}/>
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() =>
+                      setShowCPassword((showCPassword) => !showCPassword)
+                    }>
+                    {showCPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
                 loadingText="Submitting"
+                onClick={register}
                 size="lg"
                 bg={'blue.400'}
                 color={'white'}
@@ -105,10 +156,14 @@ const SignUp = () => {
                 >
                 Sign up
               </Button>
-              <Button
-        >
-          Register with Google
-        </Button>
+              <Text> Or continue with</Text>
+              <Button size="lg"
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500',
+
+                }}  onClick={signInWithGoogle}>SignUp with google</Button>
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>

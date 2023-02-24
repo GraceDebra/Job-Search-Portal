@@ -17,13 +17,37 @@ import {
 } from '@chakra-ui/react';
 import { images } from '../../constants';
 import { useNavigate } from 'react-router-dom';
-
+import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth';
+import{signInWithGoogle} from '../../firebase'
+import {auth} from '../../firebase'
+import {useAuthValue} from '../../utils/AuthContext'
 const SignIn = () => {
     const navigate= useNavigate();
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
-    const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('') 
+  const [error, setError] = useState('')
+  const {setTimeActive} = useAuthValue()
+
+  const login = e => {
+    e.preventDefault()
+    signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      if(!auth.currentUser.emailVerified) {
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          setTimeActive(true)
+          navigate('/verify-email')
+        })
+      .catch(err => alert(err.message))
+    }else{
+      navigate('/home')
+    }
+    })
+    .catch(err => setError(err.message))
+  }
+
   return (
     <Box p={2} bg={'gray.50'}>
       <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
@@ -61,12 +85,17 @@ const SignIn = () => {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={'blue.500'}onClick={() => navigate("/forgotpassword")}>Forgot password?</Link>
               </Stack>
-              <Button colorScheme={'blue'} variant={'solid'} >
+              <Button colorScheme={'blue'} variant={'solid'} onClick={login}>
                 Sign in
               </Button>
-              <Button  >
-          Login with Google
-        </Button>
+              <Text> Or continue with</Text>
+              <Button size="lg"
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500',
+
+                }}  onClick={signInWithGoogle}>SignUp with google</Button>
               <Flex>
                 <Text spacing={4}>Don't have an account?</Text>
                 <Link color={'blue.500'} onClick={() => navigate("/register")}>Create one</Link>
