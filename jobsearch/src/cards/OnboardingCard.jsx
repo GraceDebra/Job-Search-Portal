@@ -10,11 +10,15 @@ import {
   Flex,
   Divider,
   Spacer,
+  ButtonGroup,
+  Button,
+  Input,
 } from '@chakra-ui/react';
 
 
 const OnboardingCard = ({ list }) => {
   return (
+    
     <Box p={4} borderWidth={1} boxShadow={'sm'}>
       <HStack align={'center'}>
         <Image src={list.image} h={'80px'} w={'80px'} borderRadius={5} />
@@ -45,6 +49,7 @@ const OnboardingCard = ({ list }) => {
         <ChatIcon />
       </HStack>
     </Box>
+  
   );
 };
 export default OnboardingCard;
